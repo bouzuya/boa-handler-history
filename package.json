@@ -1,5 +1,5 @@
 {
-  "name": "boajs-handler-history",
+  "name": "boa-handler-history",
   "description": "A b-o-a handler for History API",
   "version": "0.1.0",
   "author": {
@@ -16,7 +16,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/bouzuya/boajs-handler-history/issues"
+    "url": "https://github.com/bouzuya/boa-handler-history/issues"
   },
   "dependencies": {
     "b-o-a": "0.4.0",
@@ -34,13 +34,13 @@
   "files": [
     "lib"
   ],
-  "homepage": "https://github.com/bouzuya/boajs-handler-history#readme",
+  "homepage": "https://github.com/bouzuya/boa-handler-history#readme",
   "keywords": [],
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bouzuya/boajs-handler-history"
+    "url": "https://github.com/bouzuya/boa-handler-history"
   },
   "scripts": {
     "build": "tsc && npm run cp",
