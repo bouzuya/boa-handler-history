@@ -35,7 +35,11 @@
     "lib"
   ],
   "homepage": "https://github.com/bouzuya/boa-handler-history#readme",
-  "keywords": [],
+  "keywords": [
+    "b-o-a",
+    "boa",
+    "boa-handler"
+  ],
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
