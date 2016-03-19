@@ -1,5 +1,5 @@
 import test from 'ava';
-import { A, O } from 'b-o-a';
+import { A, O } from 'boa-core';
 import { init as initType } from '../src/';
 import { History as HistoryType } from '../src/history';
 import * as sinon from 'sinon';

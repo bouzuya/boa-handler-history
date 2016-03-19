@@ -3,8 +3,8 @@
 
 // TODO: GoBackAction
 
-import { A, O, Handler } from 'b-o-a';
-import { init as makeRouter, Route } from 'boajs-router';
+import { A, O, Handler } from 'boa-core';
+import { init as makeRouter, Route } from 'boa-router';
 import { History } from './history';
 
 type HistoryOptions = {

@@ -19,8 +19,8 @@
     "url": "https://github.com/bouzuya/boa-handler-history/issues"
   },
   "dependencies": {
-    "b-o-a": "0.4.0",
-    "boajs-router": "0.2.0"
+    "boa-core": "0.6.1",
+    "boa-router": "0.4.0"
   },
   "devDependencies": {
     "ava": "0.13.0",
