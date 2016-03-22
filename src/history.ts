@@ -1,4 +1,6 @@
-class History {
+import { HistoryInterface } from './history-interface';
+
+class History implements HistoryInterface {
   private callback: (path: string) => void;
   private window: any;
   private history: History;
