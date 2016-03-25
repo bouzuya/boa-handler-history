@@ -20,8 +20,15 @@ class HashHistory implements HistoryInterface {
     this.window.history.back();
   }
 
-  go(path: string): void {
-    this.window.location.hash = '#' + path;
+  go(path: string, replace: boolean = false): void {
+    const hash = '#' + path;
+    if (replace) {
+      const urlObj = url.parse(this.window.location.href);
+      urlObj.hash = hash;
+      this.window.location.replace(url.format(urlObj));
+    } else {
+      this.window.location.hash = hash;
+    }
   }
 
   start(): void {
