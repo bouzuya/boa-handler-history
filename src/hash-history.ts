@@ -29,6 +29,8 @@ class HashHistory implements HistoryInterface {
       const path = parse(event.newURL);
       this.callback(path);
     }, false);
+    const path = parse(this.window.location.href);
+    this.callback(path);
   }
 }
 
