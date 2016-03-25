@@ -18,10 +18,9 @@ class History implements HistoryInterface {
   }
 
   go(path: string, replace: boolean = false): void {
-    console.log('go : ' + path);
     if (this.history) {
       const f = replace ? history.replaceState : history.pushState;
-      f.apply(history, [null, null, path]);
+      f.apply(history, [null, null, path]); // TODO: state
     }
     this.callback(path);
   }
@@ -30,7 +29,6 @@ class History implements HistoryInterface {
     if (this.history) {
       this.window.addEventListener('popstate', () => {
         const path = this.window.location.pathname;
-        console.log('back : ' + path);
         this.callback(path);
       }, false);
     }
