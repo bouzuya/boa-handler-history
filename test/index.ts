@@ -58,7 +58,7 @@ test(t => {
   const go: sinon.SinonStub = t.context.go;
   const start: sinon.SinonStub = t.context.start;
   const routes = [];
-  const action$ = O.fromArray([
+  const action$ = O.from<A<any>>([
     { type: 'go-to', data: '/' },
     { type: 'foo' } // to run the .do operator
   ]);
