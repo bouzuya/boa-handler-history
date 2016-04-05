@@ -42,13 +42,12 @@ test(t => {
   const go: sinon.SinonStub = t.context.go;
   const start: sinon.SinonStub = t.context.start;
   const routes = [];
-  const action$ = O.of({ type: 'foo' });
+  const action$ = O.of({ type: 'foo' }); // ignore
   const options = { re: () => null };
-  return init({ routes }).handler(action$, options).do(() => {
-    t.ok(History.callCount === 1);
-    t.ok(start.callCount === 1);
-    t.ok(go.callCount === 0);
-  });
+  init({ routes }).handler(action$, options).subscribe();
+  t.ok(History.callCount === 1);
+  t.ok(start.callCount === 1);
+  t.ok(go.callCount === 0);
 });
 
 test(t => {
@@ -58,15 +57,11 @@ test(t => {
   const go: sinon.SinonStub = t.context.go;
   const start: sinon.SinonStub = t.context.start;
   const routes = [];
-  const action$ = O.from<A<any>>([
-    { type: 'go-to', data: '/' },
-    { type: 'foo' } // to run the .do operator
-  ]);
+  const action$ = O.of<A<any>>({ type: 'go-to', data: '/' });
   const options = { re: () => null };
-  return init({ routes }).handler(action$, options).do(() => {
-    t.ok(History.callCount === 1);
-    t.ok(start.callCount === 1);
-    t.ok(go.callCount === 1);
-    t.same(go.getCall(0).args, ['/']);
-  });
+  init({ routes }).handler(action$, options).subscribe();
+  t.ok(History.callCount === 1);
+  t.ok(start.callCount === 1);
+  t.ok(go.callCount === 1);
+  t.same(go.getCall(0).args, ['/']);
 });
