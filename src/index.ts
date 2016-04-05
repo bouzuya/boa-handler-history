@@ -55,13 +55,10 @@ const init = (historyOptions: HistoryOptions): HistoryResponse => {
             history.start();
           }
         })
-        .map(action => {
-          if (action.type !== goToType) return action;
-          const path: string = action.data;
-          history.go(path);
-          return; // return undefined
-        })
-        .filter(a => !!a) // remove undefined
+        .filter(action => action.type === goToType)
+        .map(({ data }) => data)
+        .do((path: string) => history.go(path))
+        .filter(() => false) // remove all
         .share();
     }
   };
