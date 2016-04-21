@@ -23,7 +23,7 @@
     "boa-router": "0.4.0"
   },
   "devDependencies": {
-    "ava": "0.13.0",
+    "ava": "0.14.0",
     "parallelshell": "2.0.0",
     "proxyquire": "1.7.4",
     "sinon": "1.17.3",

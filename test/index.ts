@@ -30,9 +30,9 @@ test(t => {
   const action$ = O.empty<A<any>>();
   const options = { re: () => null };
   init({ routes }).handler(action$, options);
-  t.ok(History.callCount === 1);
-  t.ok(start.callCount === 0);
-  t.ok(go.callCount === 0);
+  t.truthy(History.callCount === 1);
+  t.truthy(start.callCount === 0);
+  t.truthy(go.callCount === 0);
 });
 
 test(t => {
@@ -45,9 +45,9 @@ test(t => {
   const action$ = O.of({ type: 'foo' }); // ignore
   const options = { re: () => null };
   init({ routes }).handler(action$, options).subscribe();
-  t.ok(History.callCount === 1);
-  t.ok(start.callCount === 1);
-  t.ok(go.callCount === 0);
+  t.truthy(History.callCount === 1);
+  t.truthy(start.callCount === 1);
+  t.truthy(go.callCount === 0);
 });
 
 test(t => {
@@ -60,8 +60,8 @@ test(t => {
   const action$ = O.of<A<any>>({ type: 'go-to', data: '/' });
   const options = { re: () => null };
   init({ routes }).handler(action$, options).subscribe();
-  t.ok(History.callCount === 1);
-  t.ok(start.callCount === 1);
-  t.ok(go.callCount === 1);
-  t.same(go.getCall(0).args, ['/']);
+  t.truthy(History.callCount === 1);
+  t.truthy(start.callCount === 1);
+  t.truthy(go.callCount === 1);
+  t.deepEqual(go.getCall(0).args, ['/']);
 });
