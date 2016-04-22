@@ -8,6 +8,9 @@ import { init as makeRouter, Route } from 'boa-router';
 import { HashHistory } from './hash-history';
 import { History } from './history';
 import { HistoryInterface } from './history-interface';
+import { _do } from 'rxjs/operator/do';
+import { filter } from 'rxjs/operator/filter';
+import { share } from 'rxjs/operator/share';
 
 type HistoryOptions = {
   goToActionType?: string;
@@ -48,18 +51,26 @@ const init = (historyOptions: HistoryOptions): HistoryResponse => {
         re({ type: routeType, data });
       }));
       let isStarted = false;
-      return action$
-        .do(() => {
-          if (!isStarted) {
-            isStarted = true;
-            history.start();
-          }
-        })
-        .filter(action => action.type === goToType)
-        .map(({ data }) => data)
-        .do((path: string) => history.go(path))
-        .filter(() => false) // remove all
-        .share();
+      return share.call(
+        filter.call(
+          _do.call(
+            filter.call(
+              _do.call(
+                action$,
+                () => {
+                  if (!isStarted) {
+                    isStarted = true;
+                    history.start();
+                  }
+                }
+              ),
+              (action: A<any>): boolean => action.type === goToType
+            ),
+            ({ data: path }: { data: string }) => history.go(path)
+          ),
+          () => false // remove all
+        )
+      );
     }
   };
 };

@@ -1,10 +1,12 @@
 import test from 'ava';
+import * as sinon from 'sinon';
+import * as proxyquire from 'proxyquire';
 import { A, O } from 'boa-core';
 import { Route } from 'boa-router';
 import { init as initType } from '../src/';
 import { History as HistoryType } from '../src/history';
-import * as sinon from 'sinon';
-import * as proxyquire from 'proxyquire';
+import 'rxjs/add/observable/empty';
+import 'rxjs/add/observable/of';
 
 test.beforeEach(t => {
   const sandbox = sinon.sandbox.create();
